@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Utils">
+      <UniqueIdentifier>{07b9b729-89c9-4a37-bc2f-0124b234ee33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Utils\Console">
+      <UniqueIdentifier>{ff5f1d1f-75bb-46cf-80e0-82a50a0f2c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game">
+      <UniqueIdentifier>{08c80774-893d-4131-ba91-fee9d05c68dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game\Logic">
+      <UniqueIdentifier>{0a52c396-06bf-4971-8fc4-1b54b2348323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Utils\Patch">
+      <UniqueIdentifier>{0dd419e2-5027-4e1e-8ec3-13d41dd78a16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game\GFX">
+      <UniqueIdentifier>{b0518753-46cc-45d0-8bf5-1ee84d1eae18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Utils\Hook">
+      <UniqueIdentifier>{7c0aa3d3-1eb6-4ef9-a31c-4bb25d046a97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Cheat">
+      <UniqueIdentifier>{230d52dc-c7b0-4ecd-871a-3e620f1c8e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game\SDL">
+      <UniqueIdentifier>{7c9fc3a2-c38d-495c-964a-feb2d14d88c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game\GFX\ImGui">
+      <UniqueIdentifier>{170c515b-cbe1-49d8-8c5c-ec027e1f2674}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Headerdateien\Utils\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="Patch.cpp">
+      <Filter>Headerdateien\Utils\Patch</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.h">
+      <Filter>Headerdateien\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_win32.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_opengl2.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Console.h">
+      <Filter>Headerdateien\Utils\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="Aimbot.hpp">
+      <Filter>Headerdateien\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.hpp">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Patch.h">
+      <Filter>Headerdateien\Utils\Patch</Filter>
+    </ClInclude>
+    <ClInclude Include="Hook.hpp">
+      <Filter>Headerdateien\Utils\Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.hpp">
+      <Filter>Headerdateien\Game\GFX</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.hpp">
+      <Filter>Headerdateien\Cheat</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.h">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Movement.hpp">
+      <Filter>Headerdateien\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL.h">
+      <Filter>Headerdateien\Game\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.hpp">
+      <Filter>Headerdateien\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Patches.hpp">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GLHook.hpp">
+      <Filter>Headerdateien\Game\GFX</Filter>
+    </ClInclude>
+    <ClInclude Include="ESP.hpp">
+      <Filter>Headerdateien\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_opengl2.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamemode.h">
+      <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
