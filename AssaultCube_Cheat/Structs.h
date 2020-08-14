@@ -25,8 +25,8 @@ typedef struct  {
 typedef struct  {
 	int health,team;
 	float xHead, yHead, zHead, xFoot,yFoot,zFoot;
+	unsigned long Base;
 	Weapon currentweapon;
-	DWORD Base;
 }Player;
 
 typedef struct

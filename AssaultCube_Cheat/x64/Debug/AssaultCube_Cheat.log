@@ -1,0 +1,119 @@
+﻿  Console.cpp
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Console.h(25,17): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+  dllmain.cpp
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Console.h(25,17): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(6,72): warning C4311: "Typumwandlung": Zeigerverkürzung von "HMODULE" zu "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(6,72): warning C4302: "Typumwandlung": Verkürzung von "HMODULE" in "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(41,58): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(42,58): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(43,64): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(44,56): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(45,70): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(46,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(47,64): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(48,74): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(49,72): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(50,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(51,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(52,72): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(53,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(54,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(55,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(56,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(57,62): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(58,52): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(59,52): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Offsets.hpp(60,54): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(9,24): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(10,27): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(11,29): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Graphics.hpp(52,51): warning C4267: "Argument": Konvertierung von "size_t" nach "GLsizei", Datenverlust möglich
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(21,40): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(22,42): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(37,66): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(39,68): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(40,60): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(41,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(42,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(43,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(44,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(45,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(46,66): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(47,21): warning C4838: Konvertierung von "float" zu "int" erfordert eine einschränkende Konvertierung
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\ESP.hpp(47,21): warning C4244: "Initialisierung": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\GLHook.hpp(50,18): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\GLHook.hpp(54,14): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\GLHook.hpp(56,75): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(10,27): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "void *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(12,19): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "void *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(16,14): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "BYTE *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(17,21): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(21,27): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "void *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(27,88): warning C4311: "Typumwandlung": Zeigerverkürzung von "LPVOID" zu "int"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(27,88): warning C4302: "Typumwandlung": Verkürzung von "LPVOID" in "int"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(28,22): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "void *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(28,39): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "void *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(30,23): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "BYTE *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Hook.hpp(31,28): warning C4312: "Typumwandlung": Konvertierung von "int" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(12,13): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(15,11): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(16,13): warning C4244: "=": Konvertierung von "int" in "float", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(43,65): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(45,67): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(47,61): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(52,63): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(55,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(56,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(57,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(68,14): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(84,61): warning C4312: "reinterpret_cast": Konvertierung von "DWORD" in größeren Typ "DWORD *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(86,67): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(88,61): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(92,63): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "int *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(95,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(96,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(97,65): warning C4312: "reinterpret_cast": Konvertierung von "unsigned long" in größeren Typ "float *"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(172,19): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Aimbot.hpp(173,11): warning C4244: "=": Konvertierung von "float" in "int", möglicher Datenverlust
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(15,47): warning C4302: "Typumwandlung": Verkürzung von "const char *" in "char"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(21,54): warning C4302: "Typumwandlung": Verkürzung von "const char *" in "char"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(34,49): warning C4302: "Typumwandlung": Verkürzung von "const char *" in "char"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(59,40): warning C4311: "Typumwandlung": Zeigerverkürzung von "void (__cdecl *)(int,bool,int,int)" zu "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(59,40): warning C4302: "Typumwandlung": Verkürzung von "void (__cdecl *)(int,bool,int,int)" in "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(60,18): error C2485: "naked": nicht erkanntes erweitertes Attribut
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(61,3): error C4235: Nicht dem Standard entsprechende Erweiterung: Das __asm-Schlüsselwort wird für diese Architektur nicht unterstützt.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(62,4): error C2065: "nop": nichtdeklarierter Bezeichner
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,4): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "mov"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,4): error C2065: "mov": nichtdeklarierter Bezeichner
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,8): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "eax"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,8): error C2065: "eax": nichtdeklarierter Bezeichner
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,18): error C2143: Syntaxfehler: Es fehlt "]" vor "+"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,18): error C3481: "ebp": Es wurde keine Lambdaerfassungsvariable gefunden.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(63,18): error C3260: "+": Unerwartete Token vor Text der Lambdafunktion werden übersprungen.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(80,1): warning C4311: "Typumwandlung": Zeigerverkürzung von "void (__cdecl *)(void)" zu "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(80,1): warning C4302: "Typumwandlung": Verkürzung von "void (__cdecl *)(void)" in "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(83,2): error C2143: Syntaxfehler: Es fehlt ";" vor "namespace"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(84,2): error C2870: "MouseHandler": Eine Namespace-Definition muss entweder im Dateigültigkeitsbereich oder unmittelbar in einer anderen Namespace-Definition angezeigt werden
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(85,34): error C2601: "InputHandler::MouseHandler::HandleMousInput": Lokale Funktionsdefinitionen sind unzulässig
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(84): message : Diese Zeile enthält eine "{", die keine Entsprechung hat.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(103,47): warning C4311: "Typumwandlung": Zeigerverkürzung von "void (__cdecl *)(int)" zu "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(103,47): warning C4302: "Typumwandlung": Verkürzung von "void (__cdecl *)(int)" in "DWORD"
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(104,19): error C2485: "naked": nicht erkanntes erweitertes Attribut
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(104,33): error C2601: "InputHandler::MouseHandler::Gate": Lokale Funktionsdefinitionen sind unzulässig
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(84): message : Diese Zeile enthält eine "{", die keine Entsprechung hat.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(105,4): error C4235: Nicht dem Standard entsprechende Erweiterung: Das __asm-Schlüsselwort wird für diese Architektur nicht unterstützt.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(117,15): error C2601: "InputHandler::MouseHandler::Init": Lokale Funktionsdefinitionen sind unzulässig
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(84): message : Diese Zeile enthält eine "{", die keine Entsprechung hat.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\InputHandler.hpp(122,1): fatal error C1506: Weiterverarbeitung nach der Auflösung von Blöcken nicht möglich
+  Functions.h
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Structs.h(29,12): error C3646: "Base": Unbekannter Überschreibungsspezifizierer
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Structs.h(29,12): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(9,24): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(10,27): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+C:\Users\Agando\Source\Repos\Fiereu\AssaultCube-Internal\AssaultCube_Cheat\Functions.h(11,29): error C7525: Inlinevariablen erfordern mindestens "/std:c++17".
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_opengl2.cpp
+  imgui_impl_win32.cpp
+  imgui_widgets.cpp

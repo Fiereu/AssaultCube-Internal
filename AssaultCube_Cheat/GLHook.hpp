@@ -80,10 +80,7 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 			}
 		}
 	}
-	if (Menu::Visible) {
-		//SDL_ShowCursor(1);
-		//SDL_WM_GrabInput(SDL_GRAB_OFF);
-	}
+	DrawCircle(*Width / 2, *Height / 2,AimbotFOV*0.7f,  100, rgb::black);
 	
 
 	RestoreGL();

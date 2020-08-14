@@ -13,8 +13,8 @@ bool FlyToggled = false;
 int AimbotSmooth = 0;
 int AimbotMode = 1;
 bool AimbotOn = false;
-float AimbotFOV = 20.0f;
-float AimbotMinDis =90.0f;
+float AimbotFOV = 50.0f;
+float AimbotMinDis = 120.0f;
 
 bool BunnyHopToggled = true;
 
