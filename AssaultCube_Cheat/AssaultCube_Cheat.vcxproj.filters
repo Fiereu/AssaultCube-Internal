@@ -39,6 +39,12 @@
     <Filter Include="Headerdateien\Game\GFX\ImGui">
       <UniqueIdentifier>{170c515b-cbe1-49d8-8c5c-ec027e1f2674}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\Game\Offsets">
+      <UniqueIdentifier>{e97e34e9-2b7e-451a-8fb4-82a463b4358e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Game\Player">
+      <UniqueIdentifier>{e28c8b6a-573a-4dd2-875b-87e7d1a95dd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -79,9 +85,6 @@
     <ClInclude Include="Aimbot.hpp">
       <Filter>Headerdateien\Game\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="Offsets.hpp">
-      <Filter>Headerdateien\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Patch.h">
       <Filter>Headerdateien\Utils\Patch</Filter>
     </ClInclude>
@@ -95,9 +98,6 @@
       <Filter>Headerdateien\Cheat</Filter>
     </ClInclude>
     <ClInclude Include="Game.hpp">
-      <Filter>Headerdateien\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.hpp">
       <Filter>Headerdateien\Game</Filter>
     </ClInclude>
     <ClInclude Include="Structs.h">
@@ -147,6 +147,12 @@
     </ClInclude>
     <ClInclude Include="Gamemode.h">
       <Filter>Headerdateien\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.hpp">
+      <Filter>Headerdateien\Game\Offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Headerdateien\Game\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

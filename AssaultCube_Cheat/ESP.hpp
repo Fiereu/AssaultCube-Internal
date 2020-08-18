@@ -2,8 +2,9 @@
 #include "Offsets.hpp"
 #include <iostream>
 #include "Structs.h"
+#include "Player.hpp"
 
-std::vector<Player> enemylist = std::vector<Player>();
+std::vector<playerent*> enemylist = std::vector<playerent*>();
 bool WorldToScreen(Vector3D pos, Vector2D* screen, GLMatrix* matrix, int windowWidth, int windowHeight)
 {
     Vector4D clipCoords;
@@ -29,24 +30,13 @@ GLMatrix* ReadMatrix() {
 }
 
 void ESP() {
-    if (*EnemyList != 0) 
-    {
         enemylist.clear();
-		for (int i = 1; i < *PlayerCount; i++) {
-
-			DWORD* EnemyBase = reinterpret_cast<DWORD*>(*EnemyList + 4 * i);
-
-			float* Health = reinterpret_cast<float*>(*EnemyBase + HealthAddy);
-			int* team = reinterpret_cast<int*>(*EnemyBase + teamAddy);
-			float* xHead = reinterpret_cast<float*>(*EnemyBase + xHeadAddy);
-			float* yHead = reinterpret_cast<float*>(*EnemyBase + yHeadAddy);
-			float* zHead = reinterpret_cast<float*>(*EnemyBase + zHeadAddy);
-			float* xFoot = reinterpret_cast<float*>(*EnemyBase + xFootAddy);
-			float* yFoot = reinterpret_cast<float*>(*EnemyBase + yFootAddy);
-			float* zFoot = reinterpret_cast<float*>(*EnemyBase + zFootAddy);
-			Player enemy = { *Health,*team, *xHead,*yHead,*zHead,*xFoot,*yFoot,*zFoot };
-			enemy.Base = *EnemyBase;
-            enemylist.push_back(enemy);
+		for (int i = 0; i < (*PlayerCount); i++)
+		{
+			playerent* enemy = *(playerent**)(*EntList+4*i);
+			if (IsValidEnt(enemy))
+			{
+				enemylist.push_back(enemy);
+			}
 		}
-    }
 }

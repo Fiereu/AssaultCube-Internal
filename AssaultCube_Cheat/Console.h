@@ -1,8 +1,6 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
-#ifndef CONSOLE_H
-#define CONSOLE_H
 //#define DEBUG //Remove in Release
 
 
@@ -23,4 +21,3 @@ private:
 	HWND wnd;
 };
 inline Console* console = new Console("Debug Console", 600, 500, 20, 20);
-#endif

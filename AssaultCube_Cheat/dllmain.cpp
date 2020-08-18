@@ -6,19 +6,13 @@
 #include "Functions.h"
 #include "GLHook.hpp"
 #include "Hook.hpp"
-#include "Settings.hpp"
-#include "Player.hpp"
-#include "Aimbot.hpp"
 #include "InputHandler.hpp"
 #include "Patches.hpp"
 #include "Game.hpp"
-#include "ESP.hpp"
 
-void Cheat() {
-
-
+DWORD __stdcall run(void* pParam) {
 	Sleep(500);
-	
+
 
 	InputHandler::Init();
 	InputHandler::MouseHandler::Init();
@@ -33,29 +27,7 @@ void Cheat() {
 	console->LogStatus("Cheat Loaded\n");
 	Pttc((char*)"[Cheat] %s", (char)"AssaultCube Cheat | By Fiereu");
 	Pttc((char*)"[Cheat] %s", (char)"Cheat Loaded");
-
-	
-	while (true) {
-
-		if (ESPToggle)
-			ESP();
-		if (GetKeyState(0x02) & 0x8000)
-			Aimbot();
-		if (*onlineMode == 0) {
-			*health = 999;
-			*InClipPrim = 999;
-			*InClipSec = 999;
-			*MunPrim = 999;
-			*MunSec = 999;
-		}
-		Sleep(1);
-	}
-
-
-	FreeLibraryAndExitThread((HMODULE)gModule, NULL);
-}
-DWORD __stdcall run(void* pParam) {
-	Cheat();
+	return 0x0;
 }
 
 bool __stdcall  DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)

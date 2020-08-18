@@ -3,9 +3,11 @@
 #define SDLK_SCANCODE_MASK (1<<30)
 #define SDL_SCANCODE_TO_KEYCODE(X)  (X | SDLK_SCANCODE_MASK)
 
-#ifndef SDL_H
-#define SDL_H
-
+typedef enum {
+	SDL_GRAB_QUERY,
+	SDL_GRAB_OFF,
+	SDL_GRAB_ON
+} SDL_GrabMode;
 typedef enum
 {
 		SDL_SCANCODE_UNKNOWN = 0,
@@ -996,5 +998,3 @@ typedef enum
 	KMOD_MODE = 0x4000,
 	KMOD_RESERVED = 0x8000
 } SDL_Keymod;
-
-#endif

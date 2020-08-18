@@ -34,14 +34,36 @@ namespace InputHandler {
 			Pttc((char*)"[Cheat] %s", (char)"Fly Toggled");
 			FlyToggled = !FlyToggled;
 			if (FlyToggled) {
-				*state = 5;
+				MainPlayer->State = 5;
 			}
 			else {
-				*state = 0;
+				MainPlayer->State = 0;
 			}
 			break;
-		
+		case NoSlowdownKey:
+			console->LogStatus("NoSlowdown Toggled\n");
+			Pttc((char*)"[Cheat] %s", (char)"NoSlowdown Toggled");
+			NoSlowdownToggled = !NoSlowdownToggled;
+			
+			break;
+		case FastReloadKey:
+			console->LogStatus("FastReload Toggled\n");
+			Pttc((char*)"[Cheat] %s", (char)"FastReload Toggled");
+			FastReloadToggled = !FastReloadToggled;
+			
+			break;
+		case OfflineRageKey:
+			if (*onlineMode == 0) {
+				OfflineRageToggled = !OfflineRageToggled;
+				Pttc((char*)"[Cheat] %s", (char)"RageMode Toggled");
+			}
+			else {
+				Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Offline");
+			}
+			
+			break;
 		default:
+			std::cout << code << std::endl;
 			break;
 		}
 		if (MouseIsDown && AimbotOn) {

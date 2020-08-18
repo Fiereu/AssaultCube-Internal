@@ -7,16 +7,23 @@ const int AimbotKey = 0xfffffffd;
 const int BunnyHopKey = 0x20;
 const int FlyKey = 0x66;
 const int ESPKey = 0x0;
+const int NoSlowdownKey = 0x6b;
+const int FastReloadKey = 0x6c;
+const int OfflineRageKey = 0x6f;
+
+bool NoSlowdownToggled = false;
+
+bool FastReloadToggled = false;
+
+bool OfflineRageToggled = false;
 
 bool FlyToggled = false;
 
-int AimbotSmooth = 0;
+float AimbotSmooth = 0.1f;
 int AimbotMode = 1;
 bool AimbotOn = false;
-float AimbotFOV = 50.0f;
+float AimbotFOV = 90.0f;
 float AimbotMinDis = 120.0f;
-
-bool BunnyHopToggled = true;
 
 bool ESPToggle = true;
 

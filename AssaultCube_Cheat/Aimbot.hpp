@@ -6,14 +6,81 @@
 #include "Structs.h"
 #include "Offsets.hpp"
 #include "Game.hpp"
-#ifndef AIMBOT_HPP
-#define AIMBOT_HPP
+
 
 inline bool MouseIsDown = false;
 
 void AimAtTarget(MousePos mp) {
-	*Yaw = mp.yaw;
-	*Pitch = mp.pitch;
+	float newyaw = mp.yaw;
+	float newpitch = mp.pitch;
+	float oldyaw = MainPlayer->Yaw;
+	float oldpitch = MainPlayer->Pitch;
+	bool negyaw = false;
+	bool negpitch = false;
+	
+	if (newyaw > oldyaw) {
+		newyaw -= oldyaw;
+	}
+	else {
+		newyaw = oldyaw - newyaw;
+		negyaw = true;
+	}
+	if (newpitch > oldpitch) {
+		newpitch -= oldpitch;
+	}
+	else {
+		newpitch = oldpitch - newpitch;
+		negpitch = true;
+	}
+	
+	newyaw = newyaw * AimbotSmooth;
+	newpitch = newpitch * AimbotSmooth;
+	if (negyaw) {
+		if (oldyaw - newyaw > 360) {
+			newyaw = oldyaw - newyaw - 360;
+		}
+		else if (oldyaw - newyaw < 0) {
+			newyaw = oldyaw - newyaw + 360;
+		}
+		else {
+			newyaw = oldyaw - newyaw;
+		}
+	}
+	else {
+		if (oldyaw + newyaw > 360) {
+			newyaw = oldyaw + newyaw - 360;
+		}
+		else if (oldyaw + newyaw < 0) {
+			newyaw = oldyaw + newyaw + 360;
+		}
+		else {
+			newyaw = oldyaw + newyaw;
+		}
+	}
+	if (negpitch) {
+		if (oldpitch + newpitch > 90) {
+			newpitch = oldpitch - newpitch - 180;
+		}
+		else if (oldpitch + newpitch < -90) {
+			newpitch = oldpitch - newpitch + 180;
+		}
+		else {
+			newpitch = oldpitch - newpitch;
+		}
+	}
+	else {
+		if (oldpitch + newpitch > 90) {
+			newpitch = oldpitch + newpitch - 180;
+		}
+		else if (oldpitch + newpitch < -90) {
+			newpitch = oldpitch + newpitch + 180;
+		}
+		else {
+			newpitch = oldpitch + newpitch;
+		}
+	}
+	MainPlayer->Yaw = newyaw;
+	MainPlayer->Pitch = newpitch;
 }
 float Get3dDistance(Vector3D to, Vector3D from)
 {
@@ -35,38 +102,32 @@ float Get2dDistance(Vector2D to, Vector2D from)
 }
 bool GetNearestPlayerFOV(Vector3D* p) {
 	Vector3D me;
-	GetMeAsVector(&me);
+	PlayerToVector(MainPlayer,&me);
 	int Nearest = 99999;
 	Vector3D pNearest;
 	for (int i = 1; i < *PlayerCount; i++) {
+		playerent* enemy = *(playerent**)(*EntList + 4 * i);
+		if (!IsValidEnt(enemy))
+			continue;
 
-		DWORD* EnemyBase = reinterpret_cast<DWORD*>(*EnemyList + 4 * i);
-
-		float* Health = reinterpret_cast<float*>(*EnemyBase + HealthAddy);
 		if (IsTeamGame(*Gamemode)) {
-			int* eteam = reinterpret_cast<int*>(*EnemyBase + teamAddy);
-			if (*eteam == *team)
+			if (enemy->team == MainPlayer->team)
 				continue;
 		}
-		
-		int* isDead = reinterpret_cast<int*>(*EnemyBase + isDeadAddy);
-		if (*isDead == 1)
+		if (enemy->State == 1)
 			continue;
-		float* xHead = reinterpret_cast<float*>(*EnemyBase + xHeadAddy);
-		float* yHead = reinterpret_cast<float*>(*EnemyBase + yHeadAddy);
-		float* zHead = reinterpret_cast<float*>(*EnemyBase + zHeadAddy);
-		Vector3D enemy = { *xHead,*yHead,*zHead };
+		Vector3D enemyVec = { enemy->XHead,enemy->YHead,enemy->ZHead };
 		Vector2D pos;
-		WorldToScreen(enemy, &pos, ReadMatrix(), *Width, *Height);
-		float dis = Get2dDistance({ *Width/2,*Height/2 }, pos);
-		float dis2 = Get3dDistance(enemy, me);
+		WorldToScreen(enemyVec, &pos, ReadMatrix(), *ScreenWidth, *ScreenHeight);
+		float dis = Get2dDistance({ *ScreenWidth/2,*ScreenHeight/2 }, pos);
+		float dis2 = Get3dDistance(enemyVec, me);
 		if (dis2 > AimbotMinDis)
 			continue;
 		if (dis > AimbotFOV&&dis!=0)
 			continue;
 		if (dis < Nearest) {
 			Nearest = dis;
-			pNearest = enemy;
+			pNearest = enemyVec;
 		}
 	}
 	if (Nearest == 99999)
@@ -76,31 +137,26 @@ bool GetNearestPlayerFOV(Vector3D* p) {
 }
 bool GetNearestPlayer(Vector3D* p) {
 	Vector3D me;
-	GetMeAsVector(&me);
+	PlayerToVector(MainPlayer, &me);
 	float Nearest = 99999;
 	Vector3D pNearest;
 	for (int i = 1; i < *PlayerCount; i++) {
-		
-		DWORD* EnemyBase = reinterpret_cast<DWORD*>(*EnemyList+4*i);
+		playerent* enemy = *(playerent**)(*EntList + 4 * i);
+		if (!IsValidEnt(enemy))
+			continue;
 
-		float* Health = reinterpret_cast<float*>(*EnemyBase + HealthAddy);
 		if (IsTeamGame(*Gamemode)) {
-			int* eteam = reinterpret_cast<int*>(*EnemyBase + teamAddy);
-			if (*eteam == *team)
+			if (enemy->team == MainPlayer->team)
 				continue;
 		}
-		int* isDead = reinterpret_cast<int*>(*EnemyBase + isDeadAddy);
-		if (*isDead == 1)
+		if (enemy->State == 1)
 			continue;
-		float* xHead = reinterpret_cast<float*>(*EnemyBase + xHeadAddy);
-		float* yHead = reinterpret_cast<float*>(*EnemyBase + yHeadAddy);
-		float* zHead = reinterpret_cast<float*>(*EnemyBase + zHeadAddy);
-		Vector3D enemy = { *xHead,*yHead,*zHead };
-		float dis = Get3dDistance(enemy, me);
+		Vector3D enemyVec = { enemy->XHead,enemy->YHead,enemy->ZHead };
+		float dis = Get3dDistance(enemyVec, me);
 
 		if (dis < Nearest) {
 			Nearest = dis;
-			pNearest = enemy;
+			pNearest = enemyVec;
 		}
 	}
 	if (Nearest == 99999)
@@ -176,22 +232,21 @@ void CalculateMousePosition(Vector3D enemy, Vector3D me, MousePos*m)
 }
 
 void Aimbot() {
-	if (*EnemyList != 0) {
 		Vector3D Target;
 		if (AimbotMode == 0) {
 			if (!GetNearestPlayer(&Target))
 				return;
-		}else{
+		}
+		else if(AimbotMode == 1){
 			if (!GetNearestPlayerFOV(&Target))
 				return;
 		}
-		
+		else {
+			return;
+		}
 		MousePos mp;
 		Vector3D me;
-		GetMeAsVector(&me);
+		PlayerToVector(MainPlayer, &me);
 		CalculateMousePosition(Target, me, &mp);
 		AimAtTarget(mp);
-	}
 }
-
-#endif
