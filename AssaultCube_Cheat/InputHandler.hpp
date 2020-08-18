@@ -58,7 +58,7 @@ namespace InputHandler {
 				Pttc((char*)"[Cheat] %s", (char)"RageMode Toggled");
 			}
 			else {
-				Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Offline");
+				Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
 			}
 			
 			break;

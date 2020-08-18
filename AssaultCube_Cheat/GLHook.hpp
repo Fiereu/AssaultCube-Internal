@@ -95,12 +95,12 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 	if (*onlineMode == 0 && OfflineRageToggled) {
 		Vector3D Target;
 		GetNearestPlayer(&Target);
-		MainPlayer->XHead = Target.x;
-		MainPlayer->YHead = Target.y;
-		MainPlayer->ZHead = Target.z;
+		MainPlayer->XFoot = Target.x;
+		MainPlayer->YFoot = Target.y;
+		MainPlayer->ZFoot = Target.z;
 	}
 	if (*onlineMode != 0 && OfflineRageToggled) {
-		Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Offline");
+		Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
 		OfflineRageToggled = false;
 	}
 
