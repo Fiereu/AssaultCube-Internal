@@ -2,16 +2,8 @@
 #include <Windows.h>
 #include <cstdint>
 #include "Structs.h"
-#include "Offsets.hpp"
 
-
-class playerent;
-class weapon;
-class EntList;
-bool IsValidEnt(playerent* ent);
-void PlayerToVector(playerent* p, Vector3D* e);
-
-class playerent
+const class playerent
 {
 public:
 	uint32_t vTable; //0x0000
@@ -93,7 +85,7 @@ public:
 	int32_t Scoped; //0x04B4
 }; //Size: 0x04B8
 
-class weapon
+const class weapon
 {
 public:
 	char pad_0x0000[0x4]; //0x0000
@@ -107,23 +99,9 @@ public:
 	int breload;
 };
 
-struct EntList
+const struct EntList
 {
 	playerent* ents[31];
 };
-
-bool IsValidEnt(playerent* ent) {
-	if (ent)
-	{
-		if (ent->vTable == 0x4E4A98 || ent->vTable == 0x4E4AC0)
-		{
-			return true;
-		}
-	}
-	return false;
-}
-void PlayerToVector(playerent* p, Vector3D* e) {
-	e->x = p->XHead;
-	e->y = p->YHead;
-	e->z = p->ZHead;
-}
+bool IsValidEnt(playerent* ent);
+void PlayerToVector(playerent* p, Vector3D* e);

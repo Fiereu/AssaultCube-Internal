@@ -21,14 +21,18 @@
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="ESP.cpp" />
     <ClCompile Include="Functions.h" />
-    <ClCompile Include="imgui.cpp" />
-    <ClCompile Include="imgui_demo.cpp" />
-    <ClCompile Include="imgui_draw.cpp" />
-    <ClCompile Include="imgui_impl_opengl2.cpp" />
-    <ClCompile Include="imgui_impl_win32.cpp" />
-    <ClCompile Include="imgui_widgets.cpp" />
+    <ClCompile Include="Imgui\imgui.cpp" />
+    <ClCompile Include="Imgui\imgui_demo.cpp" />
+    <ClCompile Include="Imgui\imgui_draw.cpp" />
+    <ClCompile Include="Imgui\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="Imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Offsets.cpp" />
     <ClCompile Include="Patch.cpp" />
+    <ClCompile Include="Patches.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aimbot.hpp" />
@@ -39,16 +43,16 @@
     <ClInclude Include="GLHook.hpp" />
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="Hook.hpp" />
-    <ClInclude Include="imconfig.h" />
-    <ClInclude Include="imgui.h" />
-    <ClInclude Include="imgui_impl_opengl2.h" />
-    <ClInclude Include="imgui_impl_win32.h" />
-    <ClInclude Include="imgui_internal.h" />
-    <ClInclude Include="imstb_rectpack.h" />
-    <ClInclude Include="imstb_textedit.h" />
-    <ClInclude Include="imstb_truetype.h" />
+    <ClInclude Include="Imgui\imconfig.h" />
+    <ClInclude Include="Imgui\imgui.h" />
+    <ClInclude Include="Imgui\imgui_impl_opengl2.h" />
+    <ClInclude Include="Imgui\imgui_impl_win32.h" />
+    <ClInclude Include="Imgui\imgui_internal.h" />
+    <ClInclude Include="Imgui\imstb_rectpack.h" />
+    <ClInclude Include="Imgui\imstb_textedit.h" />
+    <ClInclude Include="Imgui\imstb_truetype.h" />
     <ClInclude Include="InputHandler.hpp" />
-    <ClInclude Include="Movement.hpp" />
+    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Offsets.hpp" />
     <ClInclude Include="Patch.h" />
     <ClInclude Include="Patches.hpp" />

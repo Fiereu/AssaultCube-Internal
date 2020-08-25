@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GAMEMODE_H
-#define GAMEMODE_H
 
 enum
 {
@@ -29,5 +27,3 @@ enum
     GMODE_BOTTEAMONESHOTONKILL = 21,
     GMODE_NUM = 22
 };
-
-#endif

@@ -1,12 +1,18 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
+#include "Settings.hpp"
+#include "Game.hpp"
+#include "Offsets.hpp"
+#include "Aimbot.hpp"
 #include "Hook.hpp"
+#include "GLHook.hpp"
 #include "Console.h"
 #include "Patches.hpp"
-#include "Game.hpp"
+#include "Menu.hpp"
 
-namespace InputHandler {
+namespace  InputHandler
+{
 	void _keypress(int code, bool isdown, int cooked, int mod) {
 		switch (code)
 		{
@@ -14,12 +20,13 @@ namespace InputHandler {
 			console->LogStatus("Cheat Unloading\n");
 			Pttc((char*)"[Cheat] %s", (char)"Unloading");
 			delete console;
-			FreeLibraryAndExitThread((HMODULE)gModule, NULL);
+			FreeLibraryAndExitThread((HMODULE)Game::gModule, NULL);
 			break;
 		case NoRecoilKey:
 			console->LogStatus("NoRecoil Toggled\n");
 			Pttc((char*)"[Cheat] %s", (char)"NoRecoil Toggled");
-			NoRecoil.Toggle();
+			Patches::NoRecoil.Toggle();
+			NoRecoilToggled = !NoRecoilToggled;
 			break;
 		case MenuKey:
 			console->LogStatus("Menu Toggled\n");
@@ -41,26 +48,35 @@ namespace InputHandler {
 			}
 			break;
 		case NoSlowdownKey:
-			console->LogStatus("NoSlowdown Toggled\n");
-			Pttc((char*)"[Cheat] %s", (char)"NoSlowdown Toggled");
-			NoSlowdownToggled = !NoSlowdownToggled;
-			
+			if (*Game::onlineMode == 0) {
+				console->LogStatus("NoSlowdown Toggled\n");
+
+				Pttc((char*)"[Cheat] %s", (char)"NoSlowdown Toggled");
+				NoSlowdownToggled = !NoSlowdownToggled;
+			}
+			else 
+			{
+				Pttc((char*)"[Cheat] %s", (char)"Cant use this NoSlowdown in Online");
+				NoSlowdownToggled = false;
+			}
+
 			break;
 		case FastReloadKey:
 			console->LogStatus("FastReload Toggled\n");
 			Pttc((char*)"[Cheat] %s", (char)"FastReload Toggled");
 			FastReloadToggled = !FastReloadToggled;
-			
+
 			break;
 		case OfflineRageKey:
-			if (*onlineMode == 0) {
+			if (*Game::onlineMode == 0) {
 				OfflineRageToggled = !OfflineRageToggled;
 				Pttc((char*)"[Cheat] %s", (char)"RageMode Toggled");
 			}
 			else {
 				Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
+				OfflineRageToggled = false;
 			}
-			
+
 			break;
 		default:
 			std::cout << code << std::endl;
@@ -72,9 +88,9 @@ namespace InputHandler {
 		else {
 			AimbotOn = false;
 		}
-		
+
 	}
-	
+
 	int hooklen = 6;
 	DWORD HookAddy = 0x046C37C;
 	DWORD jmpBackAddy = 0x046C382;
@@ -100,10 +116,11 @@ namespace InputHandler {
 
 	void Init() {
 		DWORD GateAddy = (DWORD)Gate;
-		Hook((int)HookAddy, GateAddy+2, hooklen);
+		Hook((int)HookAddy, GateAddy + 2, hooklen);
 	}
 	namespace MouseHandler
 	{
+		
 		void HandleMousInput(int code) {
 			switch (code)
 			{
@@ -140,5 +157,7 @@ namespace InputHandler {
 			DWORD GateAddy = (DWORD)Gate;
 			Hook((int)HookAddy, GateAddy + 3, hooklen);
 		}
+		
+		
 	}
 }

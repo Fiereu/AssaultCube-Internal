@@ -6,6 +6,7 @@
 #include "Structs.h"
 #include "Offsets.hpp"
 #include "Game.hpp"
+#include "ESP.hpp"
 
 
 inline bool MouseIsDown = false;
@@ -105,12 +106,12 @@ bool GetNearestPlayerFOV(Vector3D* p) {
 	PlayerToVector(MainPlayer,&me);
 	int Nearest = 99999;
 	Vector3D pNearest;
-	for (int i = 1; i < *PlayerCount; i++) {
-		playerent* enemy = *(playerent**)(*EntList + 4 * i);
+	for (int i = 1; i < *Game::PlayerCount; i++) {
+		playerent* enemy = *(playerent**)(*Offsets::EntList + 4 * i);
 		if (!IsValidEnt(enemy))
 			continue;
 
-		if (IsTeamGame(*Gamemode)) {
+		if (Game::IsTeamGame(*Game::Gamemode)) {
 			if (enemy->team == MainPlayer->team)
 				continue;
 		}
@@ -118,8 +119,8 @@ bool GetNearestPlayerFOV(Vector3D* p) {
 			continue;
 		Vector3D enemyVec = { enemy->XHead,enemy->YHead,enemy->ZHead };
 		Vector2D pos;
-		WorldToScreen(enemyVec, &pos, ReadMatrix(), *ScreenWidth, *ScreenHeight);
-		float dis = Get2dDistance({ *ScreenWidth/2,*ScreenHeight/2 }, pos);
+		WorldToScreen(enemyVec, &pos, ReadMatrix(), *Game::ScreenWidth, *Game::ScreenHeight);
+		float dis = Get2dDistance({ *Game::ScreenWidth/2,*Game::ScreenHeight/2 }, pos);
 		float dis2 = Get3dDistance(enemyVec, me);
 		if (dis2 > AimbotMinDis)
 			continue;
@@ -140,12 +141,12 @@ bool GetNearestPlayer(Vector3D* p) {
 	PlayerToVector(MainPlayer, &me);
 	float Nearest = 99999;
 	Vector3D pNearest;
-	for (int i = 1; i < *PlayerCount; i++) {
-		playerent* enemy = *(playerent**)(*EntList + 4 * i);
+	for (int i = 1; i < *Game::PlayerCount; i++) {
+		playerent* enemy = *(playerent**)(*Offsets::EntList + 4 * i);
 		if (!IsValidEnt(enemy))
 			continue;
 
-		if (IsTeamGame(*Gamemode)) {
+		if (Game::IsTeamGame(*Game::Gamemode)) {
 			if (enemy->team == MainPlayer->team)
 				continue;
 		}
@@ -233,11 +234,11 @@ void CalculateMousePosition(Vector3D enemy, Vector3D me, MousePos*m)
 
 void Aimbot() {
 		Vector3D Target;
-		if (AimbotMode == 0) {
+		if (AimbotMode == 1) {
 			if (!GetNearestPlayer(&Target))
 				return;
 		}
-		else if(AimbotMode == 1){
+		else if(AimbotMode == 2){
 			if (!GetNearestPlayerFOV(&Target))
 				return;
 		}

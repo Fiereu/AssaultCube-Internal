@@ -1,42 +1,10 @@
 #pragma once
-#include "Offsets.hpp"
-#include <iostream>
-#include "Structs.h"
-#include "Player.hpp"
+#include <vector>
 
-std::vector<playerent*> enemylist = std::vector<playerent*>();
-bool WorldToScreen(Vector3D pos, Vector2D* screen, GLMatrix* matrix, int windowWidth, int windowHeight)
-{
-    Vector4D clipCoords;
-    clipCoords.x = pos.x * matrix->Matrix[0] + pos.y * matrix->Matrix[4] + pos.z * matrix->Matrix[8] + matrix->Matrix[12];
-    clipCoords.y = pos.x * matrix->Matrix[1] + pos.y * matrix->Matrix[5] + pos.z * matrix->Matrix[9] + matrix->Matrix[13];
-    clipCoords.z = pos.x * matrix->Matrix[2] + pos.y * matrix->Matrix[6] + pos.z * matrix->Matrix[10] + matrix->Matrix[14];
-    clipCoords.w = pos.x * matrix->Matrix[3] + pos.y * matrix->Matrix[7] + pos.z * matrix->Matrix[11] + matrix->Matrix[15];
-    if (clipCoords.w < 0.1f)
-        return false;
+inline std::vector<playerent*> enemylist = std::vector<playerent*>();
 
-    Vector3D NDC;
-	NDC.x = clipCoords.x / clipCoords.w;
-	NDC.y = clipCoords.y / clipCoords.w;
-	NDC.z = clipCoords.z / clipCoords.w;
-	screen->x = (windowWidth / 2 * NDC.x) + (NDC.x + windowWidth / 2);
-	screen->y = -(windowHeight / 2 * NDC.y) + (NDC.y + windowHeight / 2);
-	return true; // On Screen
-}
+bool WorldToScreen(Vector3D pos, Vector2D* screen, GLMatrix* matrix, int windowWidth, int windowHeight);
 
-GLMatrix* ReadMatrix() {
-	GLMatrix* m = (GLMatrix*)0x501AE8;
-	return  m;
-}
+GLMatrix* ReadMatrix();
 
-void ESP() {
-        enemylist.clear();
-		for (int i = 0; i < (*PlayerCount); i++)
-		{
-			playerent* enemy = *(playerent**)(*EntList+4*i);
-			if (IsValidEnt(enemy))
-			{
-				enemylist.push_back(enemy);
-			}
-		}
-}
+void ESP();

@@ -59,22 +59,34 @@
     <ClCompile Include="Functions.h">
       <Filter>Headerdateien\Game</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_impl_win32.cpp">
+    <ClCompile Include="Offsets.cpp">
+      <Filter>Headerdateien\Game\Offsets</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Headerdateien\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ESP.cpp">
+      <Filter>Headerdateien\Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Patches.cpp">
+      <Filter>Headerdateien\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Imgui\imgui.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_impl_opengl2.cpp">
+    <ClCompile Include="Imgui\imgui_demo.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_demo.cpp">
+    <ClCompile Include="Imgui\imgui_draw.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_draw.cpp">
+    <ClCompile Include="Imgui\imgui_impl_opengl2.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_widgets.cpp">
+    <ClCompile Include="Imgui\imgui_impl_win32.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui.cpp">
+    <ClCompile Include="Imgui\imgui_widgets.cpp">
       <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -103,9 +115,6 @@
     <ClInclude Include="Structs.h">
       <Filter>Headerdateien\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Movement.hpp">
-      <Filter>Headerdateien\Game\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="SDL.h">
       <Filter>Headerdateien\Game\SDL</Filter>
     </ClInclude>
@@ -121,30 +130,6 @@
     <ClInclude Include="ESP.hpp">
       <Filter>Headerdateien\Game\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="imgui_impl_opengl2.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_impl_win32.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_internal.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imstb_rectpack.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imstb_textedit.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imstb_truetype.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="imconfig.h">
-      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="Gamemode.h">
       <Filter>Headerdateien\Game</Filter>
     </ClInclude>
@@ -153,6 +138,33 @@
     </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>Headerdateien\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.hpp">
+      <Filter>Headerdateien\Game\GFX</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imconfig.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_impl_opengl2.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_impl_win32.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imgui_internal.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_rectpack.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_textedit.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Imgui\imstb_truetype.h">
+      <Filter>Headerdateien\Game\GFX\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,35 +4,24 @@
 #include "ESP.hpp"
 #include "Structs.h"
 #include "Settings.hpp"
-#include "imgui.h"
-#include "imgui_impl_opengl2.h"
-#include "imgui_impl_win32.h"
 #include "Gamemode.h"
 #include "Game.hpp"
 #include "Aimbot.hpp"
 #include "Offsets.hpp"
+#include "Functions.h"
+#include "InputHandler.hpp"
 
 typedef BOOL(__stdcall* twglSwapBuffers)(HDC hDc);
 twglSwapBuffers owglSwapBuffers;
 
-#pragma region ImGui
 
-Vector2D WindowSize = { 200,200 };
-
-#pragma endregion
-
-namespace Menu {
-	bool Visible = false;
-	void Init() {
-	}
-}
 
 BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
-	if (ESPToggle)
+	if (ESPToggled)
 		ESP();
 	if (GetKeyState(0x02) & 0x8000)
 		Aimbot();
-	if (*onlineMode == 0) {
+	if (*Game::onlineMode == 0) {
 		MainPlayer->Health = 999;
 		MainPlayer->Amor = 999;
 		MainPlayer->MunAssaultRifle = 999;
@@ -92,14 +81,14 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 			MainPlayer->StateSniper = 0;
 		}
 	}
-	if (*onlineMode == 0 && OfflineRageToggled) {
+	if (*Game::onlineMode == 0 && OfflineRageToggled) {
 		Vector3D Target;
 		GetNearestPlayer(&Target);
 		MainPlayer->XFoot = Target.x;
 		MainPlayer->YFoot = Target.y;
 		MainPlayer->ZFoot = Target.z;
 	}
-	if (*onlineMode != 0 && OfflineRageToggled) {
+	if (*Game::onlineMode != 0 && OfflineRageToggled) {
 		Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
 		OfflineRageToggled = false;
 	}
@@ -111,7 +100,7 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 	}
 
 	SetupOrtho();
-	if (ESPToggle) {
+	if (ESPToggled) {
 		for (int i = 0; i < enemylist.size(); i++) {
 			Vector2D posf;
 			Vector2D posh;
@@ -120,14 +109,14 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 			Vector3D Head = { enemylist.at(i)->XHead,enemylist.at(i)->YHead,enemylist.at(i)->ZHead };
 			Vector3D Foot = { enemylist.at(i)->XFoot,enemylist.at(i)->YFoot,enemylist.at(i)->ZFoot };
 
-			if (WorldToScreen(Foot, &posf, viewMatrix, *ScreenWidth, *ScreenHeight) && WorldToScreen(Head, &posh, viewMatrix, *ScreenWidth, *ScreenHeight)) {
+			if (WorldToScreen(Foot, &posf, viewMatrix, *Game::ScreenWidth, *Game::ScreenHeight) && WorldToScreen(Head, &posh, viewMatrix, *Game::ScreenWidth, *Game::ScreenHeight)) {
 				float height = posf.y - posh.y;
 				float width = height / 2;
 
 				float x1 = posh.x - width / 2.0f;
 				float y1 = posh.y;
 
-				if (IsTeamGame(*Gamemode)) {
+				if (Game::IsTeamGame(*Game::Gamemode)) {
 					if (enemylist.at(i)->team == MainPlayer->team) {
 						if (enemylist.at(i)->State == 1)
 							DrawOutline(x1, y1, width, height, 1, rgb::gray);
@@ -150,7 +139,60 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 			}
 		}
 	}
-	DrawCircle(*ScreenWidth / 2, *ScreenHeight / 2, AimbotFOV * 0.7, 100, rgb::black);
+	if (AimbotFOVToggled) {
+		DrawCircle(*Game::ScreenWidth / 2, *Game::ScreenHeight / 2, AimbotFOV * 0.7, 100, rgb::black);
+	}
+
+	if (Menu::Visible) {
+		SDL_ShowCursor(1);
+		ImGui_ImplOpenGL2_NewFrame();	
+		ImGui_ImplWin32_NewFrame();
+		ImGui::SetNextWindowSize({ 100,100 });
+		ImGui::NewFrame();
+		if (ImGui::Begin("Fiereu's AC Cheat", &Menu::Visible, ImGuiWindowFlags_NoResize))
+		{
+			
+
+			if (ImGui::BeginCombo("Aimbot Mode", Menu::AimbotCI))
+			{
+				const char* items[] = { "OFF", "Distance Mode", "FOV Mode"};
+				for (int n = 0; n < IM_ARRAYSIZE(items); n++)
+				{
+					bool is_selected = (Menu::AimbotCI == items[n]);
+					if (ImGui::Selectable(items[n], is_selected) )
+					{
+						Menu::AimbotCI = items[n];
+						AimbotMode = n;
+						if (is_selected)
+							ImGui::SetItemDefaultFocus();
+					}
+				}
+				ImGui::EndCombo();
+			}
+
+			ImGui::Checkbox("AimbotFOV", &AimbotFOVToggled);
+			ImGui::SliderFloat("Min Dstance", &AimbotMinDis, 0.0f, 300.0f);
+			ImGui::SliderFloat("FOV", &AimbotFOV, 0.0f, 900.0f);
+			ImGui::SliderFloat("Smooth", &AimbotSmooth, 0.0f, 1.0f);
+
+			bool NoRecoilToggledBak = NoRecoilToggled;
+			ImGui::Checkbox("NoRecoil", &NoRecoilToggled);
+			if (NoRecoilToggledBak == NoRecoilToggled) {
+				Patches::NoRecoil.Toggle();
+			}
+
+			ImGui::Checkbox("FastReload", &FastReloadToggled);
+
+			ImGui::Checkbox("NoSlowdown", &NoSlowdownToggled);
+
+			ImGui::Checkbox("ESP", &ESPToggled);
+		}
+		ImGui::Render();
+		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+	}
+	else {
+		SDL_ShowCursor(0);
+	}
 
 	RestoreGL();
 	return owglSwapBuffers(hDc);

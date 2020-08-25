@@ -19,12 +19,15 @@ bool OfflineRageToggled = false;
 
 bool FlyToggled = false;
 
+bool NoRecoilToggled = false;
+
+bool AimbotFOVToggled = true;
 float AimbotSmooth = 0.1f;
-int AimbotMode = 1;
+int AimbotMode = 0;
 bool AimbotOn = false;
 float AimbotFOV = 90.0f;
 float AimbotMinDis = 120.0f;
 
-bool ESPToggle = true;
+bool ESPToggled = true;
 
 #endif
