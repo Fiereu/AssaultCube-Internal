@@ -35,3 +35,8 @@ LONG Patch::Toggle()
 	VirtualProtect((LPVOID)gAdress, gSize, OldProtect, nullptr);
 	return STATUS;
 }
+
+bool Patch::isToggled()
+{
+	return gToggled;
+}

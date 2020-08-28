@@ -21,13 +21,13 @@ bool FlyToggled = false;
 
 bool NoRecoilToggled = false;
 
-bool AimbotFOVToggled = true;
+bool AimbotFOVToggled = false;
 float AimbotSmooth = 0.1f;
 int AimbotMode = 0;
 bool AimbotOn = false;
 float AimbotFOV = 90.0f;
 float AimbotMinDis = 120.0f;
 
-bool ESPToggled = true;
+bool ESPToggled = false;
 
 #endif

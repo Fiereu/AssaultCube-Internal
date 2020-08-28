@@ -19,7 +19,6 @@ namespace  InputHandler
 		case UnloadKey:
 			console->LogStatus("Cheat Unloading\n");
 			Pttc((char*)"[Cheat] %s", (char)"Unloading");
-			delete console;
 			FreeLibraryAndExitThread((HMODULE)Game::gModule, NULL);
 			break;
 		case NoRecoilKey:

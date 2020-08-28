@@ -16,72 +16,20 @@ void AimAtTarget(MousePos mp) {
 	float newpitch = mp.pitch;
 	float oldyaw = MainPlayer->Yaw;
 	float oldpitch = MainPlayer->Pitch;
-	bool negyaw = false;
-	bool negpitch = false;
 	
-	if (newyaw > oldyaw) {
-		newyaw -= oldyaw;
-	}
-	else {
-		newyaw = oldyaw - newyaw;
-		negyaw = true;
-	}
-	if (newpitch > oldpitch) {
-		newpitch -= oldpitch;
-	}
-	else {
-		newpitch = oldpitch - newpitch;
-		negpitch = true;
-	}
-	
-	newyaw = newyaw * AimbotSmooth;
-	newpitch = newpitch * AimbotSmooth;
-	if (negyaw) {
-		if (oldyaw - newyaw > 360) {
-			newyaw = oldyaw - newyaw - 360;
-		}
-		else if (oldyaw - newyaw < 0) {
-			newyaw = oldyaw - newyaw + 360;
-		}
-		else {
-			newyaw = oldyaw - newyaw;
-		}
-	}
-	else {
-		if (oldyaw + newyaw > 360) {
-			newyaw = oldyaw + newyaw - 360;
-		}
-		else if (oldyaw + newyaw < 0) {
-			newyaw = oldyaw + newyaw + 360;
-		}
-		else {
-			newyaw = oldyaw + newyaw;
-		}
-	}
-	if (negpitch) {
-		if (oldpitch + newpitch > 90) {
-			newpitch = oldpitch - newpitch - 180;
-		}
-		else if (oldpitch + newpitch < -90) {
-			newpitch = oldpitch - newpitch + 180;
-		}
-		else {
-			newpitch = oldpitch - newpitch;
-		}
-	}
-	else {
-		if (oldpitch + newpitch > 90) {
-			newpitch = oldpitch + newpitch - 180;
-		}
-		else if (oldpitch + newpitch < -90) {
-			newpitch = oldpitch + newpitch + 180;
-		}
-		else {
-			newpitch = oldpitch + newpitch;
-		}
-	}
-	MainPlayer->Yaw = newyaw;
-	MainPlayer->Pitch = newpitch;
+	newyaw = newyaw - oldyaw;
+	newpitch = newpitch - oldpitch;
+
+	if(mp.yaw < 90.0f && oldyaw > 300.0f)
+		if(oldyaw + abs(newyaw) * AimbotSmooth > 360.0f)
+			MainPlayer->Yaw = oldyaw + abs(newyaw) * AimbotSmooth - 360.0f;
+		else
+			MainPlayer->Yaw += abs(newyaw) * AimbotSmooth;
+	else if (oldyaw < 90.0f && mp.yaw > 300.0f)
+		MainPlayer->Yaw -= abs(newyaw) * AimbotSmooth;
+	else
+		MainPlayer->Yaw += newyaw * AimbotSmooth;
+	MainPlayer->Pitch += newpitch * AimbotSmooth;
 }
 float Get3dDistance(Vector3D to, Vector3D from)
 {
@@ -226,7 +174,7 @@ void CalculateMousePosition(Vector3D enemy, Vector3D me, MousePos*m)
 	}
 	float dist = Get3dDistance(me, enemy);
 	
-	m->pitch = pitch + (dist / 10000.0f);
+	m->pitch = pitch;
 	m->yaw = yaw;
 	
 	

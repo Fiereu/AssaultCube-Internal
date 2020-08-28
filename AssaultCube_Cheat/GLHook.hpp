@@ -140,7 +140,7 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 		}
 	}
 	if (AimbotFOVToggled) {
-		DrawCircle(*Game::ScreenWidth / 2, *Game::ScreenHeight / 2, AimbotFOV * 0.7, 100, rgb::black);
+		DrawCircle(*Game::ScreenWidth / 2, *Game::ScreenHeight / 2, AimbotFOV * 0.8, 100, rgb::black);
 	}
 
 	if (Menu::Visible) {
@@ -152,40 +152,54 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 		if (ImGui::Begin("Fiereu's AC Cheat", &Menu::Visible, ImGuiWindowFlags_NoResize))
 		{
 			
-
-			if (ImGui::BeginCombo("Aimbot Mode", Menu::AimbotCI))
-			{
-				const char* items[] = { "OFF", "Distance Mode", "FOV Mode"};
-				for (int n = 0; n < IM_ARRAYSIZE(items); n++)
-				{
-					bool is_selected = (Menu::AimbotCI == items[n]);
-					if (ImGui::Selectable(items[n], is_selected) )
+			if (ImGui::BeginTabBar("##Menus")) {
+				if (ImGui::BeginTabItem("Aimbot", &Menu::M1open)) {
+					if (ImGui::BeginCombo("Aimbot Mode", Menu::AimbotCI))
 					{
-						Menu::AimbotCI = items[n];
-						AimbotMode = n;
-						if (is_selected)
-							ImGui::SetItemDefaultFocus();
+						const char* items[] = { "OFF", "Distance Mode", "FOV Mode" };
+						for (int n = 0; n < IM_ARRAYSIZE(items); n++)
+						{
+							bool is_selected = (Menu::AimbotCI == items[n]);
+							if (ImGui::Selectable(items[n], is_selected))
+							{
+								Menu::AimbotCI = items[n];
+								AimbotMode = n;
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+							}
+						}
+						ImGui::EndCombo();
 					}
+					
+					ImGui::SliderFloat("Min Distance", &AimbotMinDis, 0.0f, 300.0f);
+					ImGui::SliderFloat("FOV", &AimbotFOV, 0.0f, 900.0f);
+					int t;
+					ImGui::SliderInt("Smooth", &t, 0, 5);
+					AimbotSmooth = (float)t / 10.0f;
+
+					ImGui::EndTabItem();
 				}
-				ImGui::EndCombo();
+				if (ImGui::BeginTabItem("Visuals", &Menu::M2open)) {
+					ImGui::Checkbox("Show FOV", &AimbotFOVToggled);
+					
+					ImGui::Checkbox("ESP", &ESPToggled);
+
+					ImGui::EndTabItem();
+				}
+				if (ImGui::BeginTabItem("Misc", &Menu::M3open)) {
+					ImGui::Checkbox("NoRecoil", &NoRecoilToggled);
+					if (Patches::NoRecoil.isToggled() != NoRecoilToggled) {
+						Patches::NoRecoil.Toggle();
+					}
+
+					ImGui::Checkbox("FastReload", &FastReloadToggled);
+
+					ImGui::Checkbox("NoSlowdown", &NoSlowdownToggled);
+
+					ImGui::EndTabItem();
+				}
+				ImGui::EndTabBar();
 			}
-
-			ImGui::Checkbox("AimbotFOV", &AimbotFOVToggled);
-			ImGui::SliderFloat("Min Dstance", &AimbotMinDis, 0.0f, 300.0f);
-			ImGui::SliderFloat("FOV", &AimbotFOV, 0.0f, 900.0f);
-			ImGui::SliderFloat("Smooth", &AimbotSmooth, 0.0f, 1.0f);
-
-			bool NoRecoilToggledBak = NoRecoilToggled;
-			ImGui::Checkbox("NoRecoil", &NoRecoilToggled);
-			if (NoRecoilToggledBak == NoRecoilToggled) {
-				Patches::NoRecoil.Toggle();
-			}
-
-			ImGui::Checkbox("FastReload", &FastReloadToggled);
-
-			ImGui::Checkbox("NoSlowdown", &NoSlowdownToggled);
-
-			ImGui::Checkbox("ESP", &ESPToggled);
 		}
 		ImGui::Render();
 		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
