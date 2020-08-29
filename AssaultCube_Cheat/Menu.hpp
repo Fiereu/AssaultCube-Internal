@@ -15,8 +15,8 @@ namespace Menu {
 	static const char* AimbotCI = "OFF";
 
 	bool M1open = true;
-	bool M2open = false;
-	bool M3open = false;
+	bool M2open = true;
+	bool M3open = true;
 
 	ImGuiIO& io = ImGui::GetIO();
 	WNDPROC orgWndProc = NULL;

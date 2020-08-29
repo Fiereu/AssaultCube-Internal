@@ -84,7 +84,10 @@ int Inject(int pid) {
 
 	HANDLE remoteThread = CreateRemoteThread(hProcess, NULL, NULL, (LPTHREAD_START_ROUTINE)loadLibraryAddress, RemotePayloadspace, NULL, NULL);
 	
+
 	CloseHandle(remoteThread);
+
+	ZeroMemory(RemotePayloadspace, strlen(PayloadPath));
 
 	CloseHandle(hProcess);
 
