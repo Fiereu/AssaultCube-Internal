@@ -6,14 +6,7 @@
 #ifndef GRAPHICS_HPP
 #define GRAPHICS_HPP
 
-namespace rgb
-{
-	const GLubyte red[3] = { 255, 0, 0 };
-	const GLubyte green[3] = { 0, 255, 0 };
-	const GLubyte gray[3] = { 55, 55, 55 };
-	const GLubyte lightgray[3] = { 192, 192, 192 };
-	const GLubyte black[3] = { 0, 0, 0 };
-}
+
 
 namespace Font {
 
@@ -94,9 +87,10 @@ void RestoreGL()
 	glEnable(GL_DEPTH_TEST);
 }
 
-void DrawFilledRect(float x, float y, float width, float height, const GLubyte color[3])
+void DrawFilledRect(float x, float y, float width, float height, float color[3])
 {
-	glColor3ub(color[0], color[1], color[2]);
+	GLubyte GLcolor[3] = { color[0] * 255,color[1] * 255 ,color[2] * 255 };
+	glColor3ub(GLcolor[0], GLcolor[1], GLcolor[2]);
 	glBegin(GL_QUADS);
 	glVertex2f(x, y);
 	glVertex2f(x + width, y);
@@ -105,11 +99,12 @@ void DrawFilledRect(float x, float y, float width, float height, const GLubyte c
 	glEnd();
 }
 
-void DrawOutline(float x, float y, float width, float height, float lineWidth, const GLubyte color[3])
+void DrawOutline(float x, float y, float width, float height, float lineWidth, float color[3])
 {
 	glLineWidth(lineWidth);
-	glBegin(GL_LINE_STRIP);
-	glColor3ub(color[0], color[1], color[2]);
+	glBegin(GL_LINE_STRIP); 
+	GLubyte GLcolor[3] = { color[0] * 255,color[1] * 255 ,color[2] * 255 };
+	glColor3ub(GLcolor[0], GLcolor[1], GLcolor[2]);
 	glVertex2f(x - 0.5f, y - 0.5f);
 	glVertex2f(x + width + 0.5f, y - 0.5f);
 	glVertex2f(x + width + 0.5f, y + height + 0.5f);
@@ -117,16 +112,18 @@ void DrawOutline(float x, float y, float width, float height, float lineWidth, c
 	glVertex2f(x - 0.5f, y - 0.5f);
 	glEnd();
 }
-void DrawLine(float x, float y, float x2, float y2, float lineWidth, const GLubyte color[3]) {
+void DrawLine(float x, float y, float x2, float y2, float lineWidth, float color[3]) {
 	glLineWidth(lineWidth);
 	glBegin(GL_LINE_STRIP);
-	glColor3ub(color[0], color[1], color[2]);
+	GLubyte GLcolor[3] = { color[0] * 255,color[1] * 255 ,color[2] * 255 };
+	glColor3ub(GLcolor[0], GLcolor[1], GLcolor[2]);
 	glVertex2f(x - 0.5f, y - 0.5f);
 	glVertex2f(x2 - 0.5f, y2 - 0.5f);
 	glEnd();
 }
-void DrawCircle(float cx, float cy, float r, int num_segments,const GLubyte color[3]) {
-	glColor3ub(color[0], color[1], color[2]);
+void DrawCircle(float cx, float cy, float r, int num_segments, float color[3]) {
+	GLubyte GLcolor[3] = { color[0] * 255,color[1] * 255 ,color[2] * 255 };
+	glColor3ub(GLcolor[0], GLcolor[1], GLcolor[2]);
 	glBegin(GL_LINE_LOOP);
 	for (int ii = 0; ii < num_segments; ii++) {
 		float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);

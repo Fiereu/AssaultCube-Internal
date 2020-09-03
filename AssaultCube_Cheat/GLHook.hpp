@@ -17,6 +17,14 @@ twglSwapBuffers owglSwapBuffers;
 
 
 BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
+
+	if (!Font::bBuilt || hDc != Font::hdc)
+	{
+		Font::Build(15);
+		Menu::Init();
+	}
+
+
 	if (ESPToggled)
 		ESP();
 	if (GetKeyState(0x02) & 0x8000)
@@ -62,6 +70,7 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 		}
 	}
 	if (FastReloadToggled) {
+
 		if (MainPlayer->StatePistol == 1400) {
 			MainPlayer->StatePistol = 0;
 		}
@@ -84,22 +93,20 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 	if (*Game::onlineMode == 0 && OfflineRageToggled) {
 		Vector3D Target;
 		GetNearestPlayer(&Target);
-		MainPlayer->XFoot = Target.x;
-		MainPlayer->YFoot = Target.y;
-		MainPlayer->ZFoot = Target.z;
+		if(Target.x < 9999)
+			MainPlayer->XFoot = Target.x;
+		if (Target.y < 9999)
+			MainPlayer->YFoot = Target.y;
+		if (Target.z < 999)
+			MainPlayer->ZFoot = Target.z;
 	}
 	if (*Game::onlineMode != 0 && OfflineRageToggled) {
 		Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
 		OfflineRageToggled = false;
 	}
 
-	if (!Font::bBuilt || hDc != Font::hdc)
-	{
-		Font::Build(15);
-		Menu::Init();
-	}
-
 	SetupOrtho();
+
 	if (ESPToggled) {
 		for (int i = 0; i < enemylist.size(); i++) {
 			Vector2D posf;
@@ -115,92 +122,35 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
 
 				float x1 = posh.x - width / 2.0f;
 				float y1 = posh.y;
-
 				if (Game::IsTeamGame(*Game::Gamemode)) {
 					if (enemylist.at(i)->team == MainPlayer->team) {
 						if (enemylist.at(i)->State == 1)
-							DrawOutline(x1, y1, width, height, 1, rgb::gray);
+							DrawOutline(x1, y1, width, height, 1, Dead);
 						else
-							DrawOutline(x1, y1, width, height, 1, rgb::green);
+							DrawOutline(x1, y1, width, height, 1, Ally);
 					}
 					else {
 						if (enemylist.at(i)->State == 1)
-							DrawOutline(x1, y1, width, height, 1, rgb::gray);
+							DrawOutline(x1, y1, width, height, 1, Dead);
 						else
-							DrawOutline(x1, y1, width, height, 1, rgb::red);
+							DrawOutline(x1, y1, width, height, 1, Enemy);
 					}
 				}
 				else {
 					if (enemylist.at(i)->State == 1)
-						DrawOutline(x1, y1, width, height, 1, rgb::gray);
+						DrawOutline(x1, y1, width, height, 1, Dead);
 					else
-						DrawOutline(x1, y1, width, height, 1, rgb::red);
+						DrawOutline(x1, y1, width, height, 1, Enemy);
 				}
 			}
 		}
 	}
 	if (AimbotFOVToggled) {
-		DrawCircle(*Game::ScreenWidth / 2, *Game::ScreenHeight / 2, AimbotFOV * 0.8, 100, rgb::black);
+		DrawCircle(*Game::ScreenWidth / 2, *Game::ScreenHeight / 2, AimbotFOV * 0.8, 100, FOV);
 	}
 
 	if (Menu::Visible) {
-		SDL_ShowCursor(1);
-		
-		ImGui_ImplOpenGL2_NewFrame();	
-		ImGui_ImplWin32_NewFrame();
-		ImGui::NewFrame();
-		if (ImGui::Begin("Fiereu's AC Cheat", &Menu::Visible, ImGuiWindowFlags_NoResize))
-		{
-			ImGui::SetWindowSize(ImVec2( 200,600 ));
-			if (ImGui::TreeNode("Aimbot")) {
-				if (ImGui::BeginCombo("Aimbot Mode", Menu::AimbotCI))
-				{
-					const char* items[] = { "OFF", "Distance Mode", "FOV Mode" };
-					for (int n = 0; n < IM_ARRAYSIZE(items); n++)
-					{
-						bool is_selected = (Menu::AimbotCI == items[n]);
-						if (ImGui::Selectable(items[n], is_selected))
-						{
-							Menu::AimbotCI = items[n];
-							AimbotMode = n;
-							if (is_selected)
-								ImGui::SetItemDefaultFocus();
-						}
-					}
-					ImGui::EndCombo();
-				}
-
-				ImGui::SliderFloat("Min Distance", &AimbotMinDis, 0.0f, 300.0f);
-				ImGui::SliderFloat("FOV", &AimbotFOV, 0.0f, 900.0f);
-				ImGui::SliderFloat("Smooth", &AimbotSmooth, 0.0f, 1.0f);
-
-				ImGui::EndTabItem();
-				ImGui::TreePop();
-				ImGui::Separator();
-			}
-			if (ImGui::TreeNode("Visuals")) {
-				ImGui::Checkbox("Show FOV", &AimbotFOVToggled);
-
-				ImGui::Checkbox("ESP", &ESPToggled);
-				ImGui::TreePop();
-				ImGui::Separator();
-			}
-			if (ImGui::TreeNode("Misc")) {
-				ImGui::Checkbox("NoRecoil", &NoRecoilToggled);
-				if (Patches::NoRecoil.isToggled() != NoRecoilToggled) {
-					Patches::NoRecoil.Toggle();
-				}
-
-				ImGui::Checkbox("FastReload", &FastReloadToggled);
-
-				ImGui::Checkbox("NoSlowdown", &NoSlowdownToggled);
-				ImGui::TreePop();
-				ImGui::Separator();
-			}
-			
-		}
-		ImGui::Render();
-		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+		Menu::render();
 	}
 	else {
 		SDL_ShowCursor(0);

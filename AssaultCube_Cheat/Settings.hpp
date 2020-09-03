@@ -29,5 +29,8 @@ float AimbotFOV = 90.0f;
 float AimbotMinDis = 120.0f;
 
 bool ESPToggled = false;
-
+float Ally[3] = { 0.0f, 0.0f, 0.0f };
+float Enemy[3] = { 0.0f, 0.0f, 0.0f };
+float Dead[3] = { 0.0f,0.0f,0.0f };
+float FOV[3] = { 0.0f,0.0f,0.0f };
 #endif

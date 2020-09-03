@@ -9,14 +9,11 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg
 
 namespace Menu {
 	bool Visible = false;
-	float Width = 0;
-	float Height = 0;
+	float Width = 300;
+	float Height = 500;
 
 	static const char* AimbotCI = "OFF";
 
-	bool M1open = true;
-	bool M2open = true;
-	bool M3open = true;
 
 	ImGuiIO& io = ImGui::GetIO();
 	WNDPROC orgWndProc = NULL;
@@ -75,4 +72,93 @@ namespace Menu {
 		SDL_ShowCursor(0);
 	}
 	
+	
+	void render() {
+		SDL_ShowCursor(1);
+
+		ImGui_ImplOpenGL2_NewFrame();
+		ImGui_ImplWin32_NewFrame();
+
+		ImGui::NewFrame();
+		if (ImGui::Begin("Fiereu's AC Cheat", &Menu::Visible, ImGuiWindowFlags_NoResize))
+		{
+			ImGui::SetWindowSize(ImVec2(Menu::Width, Menu::Height));
+			if (ImGui::TreeNode("Aimbot")) {
+				if (ImGui::BeginCombo("Aimbot Mode", Menu::AimbotCI))
+				{
+					const char* items[] = { "OFF", "Distance Mode", "FOV Mode" };
+					for (int n = 0; n < IM_ARRAYSIZE(items); n++)
+					{
+						bool is_selected = (Menu::AimbotCI == items[n]);
+						if (ImGui::Selectable(items[n], is_selected))
+						{
+							Menu::AimbotCI = items[n];
+							AimbotMode = n;
+							if (is_selected)
+								ImGui::SetItemDefaultFocus();
+						}
+					}
+					ImGui::EndCombo();
+				}
+
+				ImGui::SliderFloat("Min Distance", &AimbotMinDis, 0.0f, 300.0f);
+				ImGui::SliderFloat("FOV", &AimbotFOV, 0.0f, 900.0f);
+				ImGui::SliderFloat("Smooth", &AimbotSmooth, 0.0f, 1.0f);
+
+				ImGui::EndTabItem();
+				ImGui::TreePop();
+				ImGui::Separator();
+			}
+			if (ImGui::TreeNode("Visuals")) {
+				ImGui::Checkbox("Show FOV", &AimbotFOVToggled);
+
+				ImGui::Checkbox("ESP", &ESPToggled);
+				ImGui::ColorEdit3("Ally Color", Ally);
+				ImGui::ColorEdit3("Enemy Color", Enemy);
+				ImGui::ColorEdit3("Dead Color", Dead);
+				ImGui::ColorEdit3("FOV Color", FOV);
+				ImGui::TreePop();
+				ImGui::Separator();
+			}
+			if (ImGui::TreeNode("Misc")) {
+				ImGui::Checkbox("NoRecoil", &NoRecoilToggled);
+				if (Patches::NoRecoil.isToggled() != NoRecoilToggled) {
+					Patches::NoRecoil.Toggle();
+				}
+
+				ImGui::Checkbox("FastReload", &FastReloadToggled);
+
+				ImGui::Checkbox("NoSlowdown", &NoSlowdownToggled);
+				if (NoSlowdownToggled) {
+					if (*Game::onlineMode == 0) {
+						console->LogStatus("NoSlowdown Toggled\n");
+						Pttc((char*)"[Cheat] %s", (char)"NoSlowdown Toggled");
+					}
+					else
+					{
+						Pttc((char*)"[Cheat] %s", (char)"Cant use this NoSlowdown in Online");
+						NoSlowdownToggled = false;
+					}
+				}
+
+				ImGui::Checkbox("Offline RageMode", &OfflineRageToggled);
+				if (OfflineRageToggled) {
+					if (*Game::onlineMode == 0) {
+						console->LogStatus("OfflineRage Toggled\n");
+						Pttc((char*)"[Cheat] %s", (char)"OfflineRage Toggled");
+					}
+					else
+					{
+						Pttc((char*)"[Cheat] %s", (char)"Cant use this OfflineRage in Online");
+						OfflineRageToggled = false;
+					}
+				}
+				ImGui::TreePop();
+				ImGui::Separator();
+			}
+
+		}
+		ImGui::Render();
+		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+	}
 }
