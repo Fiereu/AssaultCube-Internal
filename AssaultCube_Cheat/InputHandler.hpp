@@ -22,13 +22,10 @@ namespace  InputHandler
 			FreeLibraryAndExitThread((HMODULE)Game::gModule, NULL);
 			break;
 		case NoRecoilKey:
-			console->LogStatus("NoRecoil Toggled\n");
-			Pttc((char*)"[Cheat] %s", (char)"NoRecoil Toggled");
 			Patches::NoRecoil.Toggle();
 			NoRecoilToggled = !NoRecoilToggled;
 			break;
 		case MenuKey:
-			console->LogStatus("Menu Toggled\n");
 			Menu::Visible = !Menu::Visible;
 			break;
 		case AimbotKey:
@@ -48,9 +45,6 @@ namespace  InputHandler
 			break;
 		case NoSlowdownKey:
 			if (*Game::onlineMode == 0) {
-				console->LogStatus("NoSlowdown Toggled\n");
-
-				Pttc((char*)"[Cheat] %s", (char)"NoSlowdown Toggled");
 				NoSlowdownToggled = !NoSlowdownToggled;
 			}
 			else 
@@ -61,15 +55,12 @@ namespace  InputHandler
 
 			break;
 		case FastReloadKey:
-			console->LogStatus("FastReload Toggled\n");
-			Pttc((char*)"[Cheat] %s", (char)"FastReload Toggled");
 			FastReloadToggled = !FastReloadToggled;
 
 			break;
 		case OfflineRageKey:
 			if (*Game::onlineMode == 0) {
 				OfflineRageToggled = !OfflineRageToggled;
-				Pttc((char*)"[Cheat] %s", (char)"RageMode Toggled");
 			}
 			else {
 				Pttc((char*)"[Cheat] %s", (char)"Cant use this RageMode in Online");
