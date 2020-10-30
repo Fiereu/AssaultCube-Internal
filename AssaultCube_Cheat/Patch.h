@@ -5,12 +5,12 @@
 class Patch
 {
 public:
-	Patch(int Adress, std::vector<int> orgBytes, int size, std::vector<int> patchBytes);
+	Patch(int Address, std::vector<int> orgBytes, int size, std::vector<int> patchBytes);
 	~Patch(void);
 	LONG Toggle();
 	bool isToggled();
 private:
-	int gAdress;
+	int gAddress;
 	bool gToggled = false;
 	int gSize;
 	std::vector<int> gOrgBytes;
